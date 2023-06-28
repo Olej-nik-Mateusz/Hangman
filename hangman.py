@@ -1,5 +1,6 @@
 import pickWord
 import string
+import visualization
 
 
 def hangman():
@@ -8,9 +9,10 @@ def hangman():
     wordLetters = set(word)     # letters in word
     alphabet = set(string.ascii_uppercase)      # to use only ASCII uppercase letters
     usedLetters = set()     # list with letters already used
-    # print(word) # helps testing if You can win.
+    # print(word) # helps testing if You can win, just delete hashtag.
     
     while len(wordLetters)!=0 and lives!=0: # condition which run game untill lost all lifes or win 
+        visualization.visualization(lives)
         print(f"\n Lives left: {lives} \n")
         print(f"You have already used letters: {', '.join(usedLetters)}")   # used letters
         hangmanWord = [letter if letter in usedLetters else "-" for letter in word ]
@@ -36,8 +38,10 @@ def hangman():
     
     
     if lives ==0:   # lose
+        visualization.visualization(lives)
         print(f"Sorry, You lost this time. Guessing word was: {word}")
     else:   # win
+        visualization.visualizationWin()
         print(f"Congratulations!!! \nYou guessed {word}, and won the game. ")
     
 
